@@ -14,7 +14,7 @@ const ResataurantList = (props) => {
             }
         };
         fetchData()
-    },[])
+    },[restaurant])
 
 
 
@@ -33,7 +33,7 @@ const ResataurantList = (props) => {
                </thead>
                <tbody>
 
-                   {
+                   { restaurant &&
                    restaurant.map(restaurant => {
                        return (
                            <tr key={restaurant.id}>
@@ -47,31 +47,7 @@ const ResataurantList = (props) => {
                        )
                    })
                    }
-                   {/* <tr>
-                       <td>mac donald</td>
-                       <td>New York</td>
-                       <td>$$</td>
-                       <td>rating</td>
-                       <td>
-                           <button className="btn btn-warning"> Update</button>
-                       </td>
-                       <td>
-                           <button className="btn btn-danger"> Delete</button>
-                       </td>
-                   </tr>
-
-                   <tr>
-                       <td>mac donald</td>
-                       <td>New York</td>
-                       <td>$$</td>
-                       <td>rating</td>
-                       <td>
-                           <button className="btn btn-warning"> Update</button>
-                       </td>
-                       <td>
-                           <button className="btn btn-danger"> Delete</button>
-                       </td>
-                   </tr> */}
+            
                </tbody>
             </table>
         </div>
