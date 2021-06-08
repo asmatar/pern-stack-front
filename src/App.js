@@ -11,10 +11,10 @@ function App() {
       <div className='container'>
         <Router>
           <Switch>
-            <Route exat path='/'>
+            <Route exact path='/'>
               <Home />
             </Route>
-            <Route exat path='/restaurants/:id/update'>
+            <Route exact path='/restaurants/:id/update'>
               <UpdatePage />
             </Route>
             <Route exact path='/restaurants/:id'>

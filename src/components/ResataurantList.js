@@ -1,8 +1,13 @@
 import React, { useContext, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import RestaurantFinder from '../api/RestaurantFinder';
 import { RestaurantContext } from '../context/restaurantContext';
 
 const ResataurantList = (props) => {
+    let history = useHistory();
+    const handleUpdateRestaurant = (id) => {
+        history.push(`/restaurants/${id}/update`)
+    }
     const {restaurant, setRestaurant} = useContext(RestaurantContext)
     useEffect( ()=> {
         const fetchData = async() => {
@@ -19,7 +24,7 @@ const ResataurantList = (props) => {
     const handleDeleteRestaurant = async (id) => {
         try {
             const response = await RestaurantFinder.delete(`/${id}`);
-            console.log(response.data.data.restaurant)
+            console.log(response)
          } catch (error) {
              console.log(error)
          }
@@ -48,7 +53,13 @@ const ResataurantList = (props) => {
                                <td>{restaurant.location}</td>
                                <td>{"$".repeat(restaurant.price)}</td>
                                <td>review</td>
-                               <td><button className="btn btn-warning"> Update</button></td>
+                               <td>
+                                   <button 
+                                   onClick={event => handleUpdateRestaurant(restaurant.id)}
+                                   className="btn btn-warning"> 
+                                   Update
+                                   </button>
+                                   </td>
                                <td><button
                                onClick={() => handleDeleteRestaurant(restaurant.id)}
                                className="btn btn-danger"> Delete</button></td>
@@ -56,7 +67,6 @@ const ResataurantList = (props) => {
                        )
                    })
                    }
-            
                </tbody>
             </table>
         </div>
