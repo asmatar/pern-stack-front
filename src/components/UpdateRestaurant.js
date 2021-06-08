@@ -1,15 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import RestaurantFinder from '../api/RestaurantFinder';
-import { RestaurantContext } from '../context/restaurantContext';
 
 const UpdateRestaurant = (props) => {
-    const {restaurants} = useContext(RestaurantContext);
+    // const {restaurants} = useContext(RestaurantContext);
     const {id} = useParams()
     const [name, setName] = useState('')
     const [location, setLocation] = useState('')
     const [price, setPrice] = useState('Price range')
 
+    const handleSubmit = async (event) => {
+            event.preventDefault()
+            try {
+                const updateRestaurant = await RestaurantFinder.put(`/${id}`, {name, location, price});
+                console.log(updateRestaurant)
+             } catch (error) {
+                 console.log(error)
+             }
+    }
+    
     useEffect(() => {
        const fetchData = async() => {
            const response = await RestaurantFinder.get(`/${id}`)
@@ -50,7 +59,9 @@ const UpdateRestaurant = (props) => {
                     />
                 </div>
 
-                <button className='btn btn-primary'> enregistrer</button>
+                <button className='btn btn-primary'
+                onClick={handleSubmit}
+                > enregistrer</button>
             </form>
         </div>
     )
