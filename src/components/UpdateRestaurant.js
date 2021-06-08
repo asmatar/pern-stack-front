@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import RestaurantFinder from '../api/RestaurantFinder';
 
 const UpdateRestaurant = (props) => {
@@ -8,7 +8,8 @@ const UpdateRestaurant = (props) => {
     const [name, setName] = useState('')
     const [location, setLocation] = useState('')
     const [price, setPrice] = useState('Price range')
-
+    const history = useHistory()
+    
     const handleSubmit = async (event) => {
             event.preventDefault()
             try {
@@ -17,6 +18,7 @@ const UpdateRestaurant = (props) => {
              } catch (error) {
                  console.log(error)
              }
+             history.push('/')
     }
     
     useEffect(() => {
