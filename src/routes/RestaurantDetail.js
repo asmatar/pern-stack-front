@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import RestaurantFinder from "../api/RestaurantFinder";
 import AddReview from '../components/AddReview';
 import Reviews from '../components/Reviews';
+import StarRating from '../components/StarRating';
 import { RestaurantContext } from '../context/restaurantContext';
 
 const RestaurantDetail = () => {
@@ -23,12 +24,16 @@ const RestaurantDetail = () => {
             }
                fetchData()
       }, [])
+
     return (
         <div>
             { selectedRestaurant &&
             (
                 <>
                 <h1 className='text-center'>{selectedRestaurant.restaurants.name}</h1>
+                <div className="text-center">
+                    <StarRating rating={selectedRestaurant.restaurants.average_rating} />
+                </div>
                 <div className="mt-3">
                     <Reviews reviews={selectedRestaurant} />
                 </div>
