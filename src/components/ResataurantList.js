@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import RestaurantFinder from '../api/RestaurantFinder';
+import { RestaurantContext } from '../context/restaurantContext';
 
-const ResataurantList = () => {
-
+const ResataurantList = (props) => {
+    const {restaurant, setRestaurant} = useContext(RestaurantContext)
     useEffect( ()=> {
         const fetchData = async() => {
             try {
                 const response = await RestaurantFinder.get('/');
-                console.log(response);
+                setRestaurant(response.data.data.restaurants)
             } catch (error) {
                 console.log(error)
             }
@@ -19,7 +20,7 @@ const ResataurantList = () => {
 
     return (
         <div className='list-group'>
-            <table class="table table-hover table-dark">
+            <table className="table table-hover table-dark">
                <thead>
                    <tr className="bg-primary">
                        <th scope='col'>Restaurant</th>
@@ -31,7 +32,22 @@ const ResataurantList = () => {
                    </tr>
                </thead>
                <tbody>
-                   <tr>
+
+                   {
+                   restaurant.map(restaurant => {
+                       return (
+                           <tr key={restaurant.id}>
+                               <td>{restaurant.name}</td>
+                               <td>{restaurant.location}</td>
+                               <td>{"$".repeat(restaurant.price)}</td>
+                               <td>review</td>
+                               <td><button className="btn btn-warning"> Update</button></td>
+                               <td><button className="btn btn-danger"> Delete</button></td>
+                           </tr>
+                       )
+                   })
+                   }
+                   {/* <tr>
                        <td>mac donald</td>
                        <td>New York</td>
                        <td>$$</td>
@@ -55,7 +71,7 @@ const ResataurantList = () => {
                        <td>
                            <button className="btn btn-danger"> Delete</button>
                        </td>
-                   </tr>
+                   </tr> */}
                </tbody>
             </table>
         </div>
