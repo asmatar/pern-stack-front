@@ -1,11 +1,27 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import { useParams } from "react-router-dom";
+import RestaurantFinder from "../api/RestaurantFinder";
 
 const AddReview = () => {
-
+    const { id } = useParams();
     const [name,setName] = useState('')
     const [review,setReview] = useState('')
     const [rating,setRating] = useState('')
 
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                 const response = await RestaurantFinder.get(`/${id}`)
+                 console.log(response.data.data.restaurants)
+                
+            } catch (error) {
+                console.log(error)
+            }
+          }
+             fetchData()
+    }, [])
+    
     return (
         <div className='mb-2'>
             <form action="">
