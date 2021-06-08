@@ -25,8 +25,12 @@ const RestaurantDetail = () => {
                fetchData()
       }, [])
 
-    return (
-        <div>
+      console.log(selectedRestaurant)
+    //   console.log(selectedRestaurant.restaurants)
+    //   console.log(selectedRestaurant.restaurants.average_rating)
+    //   console.log(selectedRestaurant.restaurants.count)
+      return (
+          <div>
             { selectedRestaurant &&
             (
                 <>
@@ -36,12 +40,19 @@ const RestaurantDetail = () => {
                 </div>
                 <div className="mt-3">
                     <Reviews reviews={selectedRestaurant} />
+                    <span className='text-warning ml-1'>
+                        {/* {selectedRestaurant.restaurant.count ? `(${selectedRestaurant.restaurant.count})` : '(0)'} */}
+                        {/* {selectedRestaurant.restaurants.count
+                ? `(${selectedRestaurant.restaurants.count})`
+                : "(0)"} */}
+                    </span>
                 </div>
                 <AddReview />
                 </>
             )
-            }
+        }
         </div>
+        
     )
 }
 

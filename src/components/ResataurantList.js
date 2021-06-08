@@ -7,7 +7,7 @@ import StarRating from './StarRating';
 const ResataurantList = (props) => {
     let history = useHistory();
     
-    const handleUpdateRestaurant = (event, id) => {
+    const handleUpdateRestaurant = ( id,event) => {
         event.stopPropagation();
         history.push(`/restaurants/${id}/update`)
     }
