@@ -28,6 +28,7 @@ const RestaurantDetail = () => {
             { selectedRestaurant &&
             (
                 <>
+                <h1 className='text-center'>{selectedRestaurant.restaurants.name}</h1>
                 <div className="mt-3">
                     <Reviews reviews={selectedRestaurant} />
                 </div>
