@@ -16,7 +16,7 @@ const AddReview = () => {
         const handleSubmitReview = async (event) => {
             event.preventDefault();
             try {
-               const response = await RestaurantFinder.post(`/${id}/addReview`, {name, review, rating});
+               const response = await RestaurantFinder.post(`/restaurants/${id}/addReview`, {name, review, rating});
                history.push("/");
                history.push(location.pathname);
             } catch (error) {

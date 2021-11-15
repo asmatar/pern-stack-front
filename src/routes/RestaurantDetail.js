@@ -15,7 +15,7 @@ const RestaurantDetail = () => {
       useEffect(() => {
           const fetchData = async () => {
               try {
-                   const response = await RestaurantFinder.get(`/${id}`)
+                   const response = await RestaurantFinder.get(`/restaurants/${id}`)
                    setSelectedRestaurant(response.data.data)
                    console.log(setSelectedRestaurant)
               } catch (error) {
@@ -35,6 +35,7 @@ const RestaurantDetail = () => {
                     <StarRating rating={selectedRestaurant.restaurants.average_rating} />
                 </div>
                 <div className="mt-3">
+                   { console.log('selected ',selectedRestaurant)}
                     <Reviews reviews={selectedRestaurant} />
                     <span className='text-warning ml-1'>
                         {/* {selectedRestaurant.restaurant.count ? `(${selectedRestaurant.restaurant.count})` : '(0)'} */}

@@ -17,7 +17,7 @@ const ResataurantList = (props) => {
     useEffect( ()=> {
         const fetchData = async() => {
             try {
-                const response = await RestaurantFinder.get('/');
+                const response = await RestaurantFinder.get('/restaurants');
                 setRestaurant(response.data.data.restaurants)
             } catch (error) {
                 console.log(error)
@@ -39,11 +39,11 @@ const ResataurantList = (props) => {
         history.push(`/restaurants/${id}`)
     }
     const renderRating = (restaurant) => {
-
+console.log('renderrating',restaurant)
         if (!restaurant.count) {
             return <span className="text-warning">0 review</span>
         }
-        return <> <StarRating rating={restaurant.id} />
+        return <> <StarRating rating={restaurant.average_rating} />
         <span className="text-warning ml-1">{restaurant.count}</span>
         </>
     }
@@ -65,6 +65,7 @@ const ResataurantList = (props) => {
 
                    { restaurant &&
                    restaurant.map(restaurant => {
+                    //    console.log('je suis dans le restau',restaurant.average_rating)
                        return (
                            <tr key={restaurant.id} onClick={() => handleRestaurantSelect(restaurant.id)}>
                                <td>{restaurant.name}</td>

@@ -12,7 +12,7 @@ const UpdateRestaurant = (props) => {
     const handleSubmit = async (event) => {
             event.preventDefault()
             try {
-                const updateRestaurant = await RestaurantFinder.put(`/${id}`, {name, location, price});
+                const updateRestaurant = await RestaurantFinder.put(`/restaurants/${id}`, {name, location, price});
                 console.log(updateRestaurant)
              } catch (error) {
                  console.log(error)
@@ -22,7 +22,7 @@ const UpdateRestaurant = (props) => {
     
     useEffect(() => {
        const fetchData = async() => {
-           const response = await RestaurantFinder.get(`/${id}`)
+           const response = await RestaurantFinder.get(`/restaurants/${id}`)
            setName(response.data.data.restaurants.name)
            setLocation(response.data.data.restaurants.location)
            setPrice(response.data.data.restaurants.price)
@@ -62,7 +62,7 @@ const UpdateRestaurant = (props) => {
                 <button className='btn btn-outline-primary my-1 '
                 onClick={handleSubmit}
                 > enregistrer</button>
-                <button onClick={()=>history.push('/')} className='btn btn-outline-success my-1 mx-1'> Retour</button>
+                <button  className='btn btn-outline-success my-1 mx-1'> Retour</button>
             </form>
         </div>
     )
