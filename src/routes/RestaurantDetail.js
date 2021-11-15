@@ -25,10 +25,6 @@ const RestaurantDetail = () => {
                fetchData()
       }, [])
 
-      console.log(selectedRestaurant)
-    //   console.log(selectedRestaurant.restaurants)
-    //   console.log(selectedRestaurant.restaurants.average_rating)
-    //   console.log(selectedRestaurant.restaurants.count)
       return (
           <div>
             { selectedRestaurant &&

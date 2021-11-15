@@ -3,7 +3,6 @@ import { useHistory, useParams } from 'react-router';
 import RestaurantFinder from '../api/RestaurantFinder';
 
 const UpdateRestaurant = (props) => {
-    // const {restaurants} = useContext(RestaurantContext);
     const {id} = useParams()
     const [name, setName] = useState('')
     const [location, setLocation] = useState('')
@@ -24,7 +23,6 @@ const UpdateRestaurant = (props) => {
     useEffect(() => {
        const fetchData = async() => {
            const response = await RestaurantFinder.get(`/${id}`)
-        //    console.log(response.data.data)
            setName(response.data.data.restaurants.name)
            setLocation(response.data.data.restaurants.location)
            setPrice(response.data.data.restaurants.price)
@@ -35,9 +33,9 @@ const UpdateRestaurant = (props) => {
 
     return (
         <div>
-            {/* <h1>{restaurants[0].name}</h1> */}
+
             <form action="">
-                <div className="form-group">
+                <div className="form-group my-2">
                     <label htmlFor="name">Name</label>
                     <input type="text" id='name' className='form-control' 
                     value={name}
@@ -45,7 +43,7 @@ const UpdateRestaurant = (props) => {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group my-2">
                     <label htmlFor="location">Location</label>
                     <input type="text" id='location' className='form-control'
                       value={location}
@@ -53,7 +51,7 @@ const UpdateRestaurant = (props) => {
                     />
                 </div>
 
-                <div className="form-group">
+                <div className="form-group my-2">
                     <label htmlFor="price">Price</label>
                     <input type="number" id='price' className='form-control' 
                       value={price}
@@ -61,9 +59,10 @@ const UpdateRestaurant = (props) => {
                     />
                 </div>
 
-                <button className='btn btn-primary'
+                <button className='btn btn-outline-primary my-1 '
                 onClick={handleSubmit}
                 > enregistrer</button>
+                <button onClick={()=>history.push('/')} className='btn btn-outline-success my-1 mx-1'> Retour</button>
             </form>
         </div>
     )

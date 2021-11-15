@@ -24,18 +24,18 @@ const AddRestaurant = () => {
             <form action="">
                 <div className="form-row">
                     <div className="col">
-                        <input value={name} onChange={event =>setName(event.target.value) } type="text" className='form-control' placeholder='name'/>
+                        <input value={name} onChange={event =>setName(event.target.value) } type="text" className='form-control my-2' placeholder='name'/>
                     </div>
-                    <div className="col">
+                    <div className="col ">
                         <input 
                         value={location} onChange={event =>setLocation(event.target.value) }
                         type="text" className='form-control' placeholder='location'/>
                     </div>
-                    <div className="col">
+                    <div className="col ">
                         <select
                         value={price} onChange={event =>setPrice(event.target.value) }
-                        className='custom-select my-1 mr-sm-2' >
-                            <option disabled> Price range</option>
+                        className=' my-2 mr-sm-2 btn btn-outline-primary dropdown-toggle' >
+                            <option disabled className='text-danger'> Price range</option>
                             <option value="1">$</option>
                             <option value="2">$$</option>
                             <option value="3">$$$</option>
@@ -45,7 +45,7 @@ const AddRestaurant = () => {
                     </div>
                     <button 
                     onClick={handleAddRestaurant}
-                    type='submit'className='btn btn-primary'> add</button>
+                    type='submit'className='btn btn-outline-primary'> add</button>
                 </div>
             </form>
         </div>

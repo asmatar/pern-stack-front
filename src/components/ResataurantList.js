@@ -74,13 +74,13 @@ const ResataurantList = (props) => {
                                <td>
                                    <button 
                                    onClick={(event) => handleUpdateRestaurant(restaurant.id, event)}
-                                   className="btn btn-warning"> 
+                                   className="btn btn-outline-warning"> 
                                    Update
                                    </button>
                                    </td>
                                <td><button
                                onClick={(event) => handleDeleteRestaurant(restaurant.id, event)}
-                               className="btn btn-danger"> Delete</button></td>
+                               className="btn btn-outline-danger"> Delete</button></td>
                            </tr>
                        )
                    })

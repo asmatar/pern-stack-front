@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useHistory, useLocation, useParams } from "react-router-dom";
 import RestaurantFinder from "../api/RestaurantFinder";
 
-
 const AddReview = () => {
     const { id } = useParams();
     const location = useLocation();
@@ -12,7 +11,7 @@ const AddReview = () => {
     
     const [name,setName] = useState('')
     const [review,setReview] = useState('')
-    const [rating,setRating] = useState('')
+    const [rating,setRating] = useState('rating')
 
         const handleSubmitReview = async (event) => {
             event.preventDefault();
@@ -40,12 +39,12 @@ const AddReview = () => {
                         onChange={event => setName(event.target.value)}
                         />
                     </div>
-                    <div className="form-group col-4">
-                        <label htmlFor="rating">rating</label>
-                        <select name="" id="rating" className='custom-select'
+                    <div className="form-group col-4 my-2">
+                        <label htmlFor="rating"></label>
+                        <select name="" id="rating" className=' mr-sm-2 btn btn-outline-primary dropdown-toggle '
                         value={rating}
                         onChange={event => setRating(event.target.value)}>
-                            <option disabled>rating</option>
+                            <option disabled className='text-danger'>rating</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -61,8 +60,9 @@ const AddReview = () => {
                     onChange={event => setReview(event.target.value)}
                     ></textarea>
                 </div>
-                <button className='btn btn-primary' type='submit'
+                <button className='btn btn-outline-primary' type='submit'
                 onClick={handleSubmitReview}> submit</button>
+                <button onClick={()=>history.push('/')}className='btn btn-outline-success my-2 mx-1'> Retour</button>
             </form>
         </div>
     )
