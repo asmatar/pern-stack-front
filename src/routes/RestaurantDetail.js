@@ -23,7 +23,7 @@ const RestaurantDetail = () => {
               }
             }
                fetchData()
-      }, [])
+      }, [selectedRestaurant])
 
       return (
           <div>

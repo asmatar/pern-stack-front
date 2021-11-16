@@ -1,6 +1,5 @@
 // import { TrashIcon } from '@heroicons/react/solid'
 import React from 'react';
-// import { useParams } from 'react-router';
 import RestaurantFinder from '../api/RestaurantFinder';
 import StarRating from './StarRating';
 const Reviews = ({reviews}) => {
@@ -15,13 +14,14 @@ const Reviews = ({reviews}) => {
          } catch (error) {
              console.log(error)
          }
+        //  window.location.reload();
     }
     return (
         <div className='row row-cols-3 mb-2'>
         {
             reviews.reviews.map((review) => {
                 return(
-                    <div key={review.id} className=" card text-white bg-primary mb-2 mx-1" style={{maxWidth: '30%'}}>
+                    <div key={review.id} className=" card text-white bg-primary mb-2 mx-1" style={{maxWidth: '50%'}}>
                         <div className="card-header d-flex justify-content-between">
                             <span>{review.name}</span>
                             <span><StarRating rating={review.rating} /></span>
